@@ -235,3 +235,10 @@ h1 {
     width: 100%;
   }    
 }
+
+/* Added by ezl just for the demo */
+/* Just took the #deck .card.faq style from caravanserai */
+#deck .card.brown {
+    color: #fff;
+    background-color: #2C1D16;
+}
