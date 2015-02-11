@@ -58,7 +58,7 @@ h1 {
 
 #deck .card.cover {
   padding: 0;
-  background-image: url(http://ad009cdnb.archdaily.net/wp-content/uploads/2010/08/1282831212-01-geral-frontal-noturna-1000x666.jpg);
+  background-image: url('../img/bg.jpg');
   background-size: cover;
   background-position: top right;
   background-color: #111;
