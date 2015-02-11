@@ -41,8 +41,10 @@ h1 {
 
 #deck .card .tagline {
   position: absolute;
-  right: 45px;
-  left: 45px;
+  right: 0px;
+  left: 0px;
+  padding-right: 45px;
+  padding-left: 45px;
   bottom: 35px;
   font-family: "brandon-grotesque",sans-serif;
   font-style: normal;
@@ -50,10 +52,11 @@ h1 {
   font-size: 38px; 
   line-height: 46px;  
 }
+
 #deck .card.stacked .tagline {
   position: fixed;
-  right: 65px; /* 45 + an extra 20 since we're popping it out of the dom and the cards are spaced out by 20px */
-  left: 65px; /* 45 + an extra 20 since we're popping it out of the dom and the cards are spaced out by 20px */
+  right: 20px; /* Set the 20px offsets since we're popping this out of the DOM */
+  left: 20px; /* Set the 20px offsets since we're popping this out of the DOM */
 }
 
 #deck .card.cover {
