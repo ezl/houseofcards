@@ -41,14 +41,17 @@ h1 {
 
 #deck .card .tagline {
   position: absolute;
-  right: 45px;  
-  bottom: 35px;
+  right: 45px;
   left: 45px;
+  bottom: 35px;
   font-family: "brandon-grotesque",sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 38px; 
   line-height: 46px;  
+}
+#deck .card.stacked .tagline {
+  position: fixed;
 }
 
 #deck .card.cover {

@@ -358,6 +358,11 @@ var HOC = {
 				if (direction == 1) {
 					// Remove stacked CSS
 					card.className = card.className.replace(' stacked','');
+
+					// Set the tagline position
+					tagline = card.getElementsByClassName("tagline")[0];
+					tagline.style.bottom = card.offsetHeight - card.scrollHeight + 'px';
+
 					// Set proper top distance
 					card.style.top = HOC.ui.height * (this.currentcard + 1) + 'px';
 				} else {
@@ -365,6 +370,10 @@ var HOC = {
 					card.className += ' stacked';	
 					// Set top
 					card.style.top = (mini) ? '0' : '20px';									
+
+					// Set the tagline position
+					tagline = card.getElementsByClassName("tagline")[0];
+					tagline.style.bottom = '';
 				}
 
 				// Set current card	
