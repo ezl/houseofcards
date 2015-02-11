@@ -15,6 +15,12 @@ var HOC = {
 	browser: undefined,
 	opacity: '',
 
+	toggleCardContentScroll: function(scroll) {
+		for(var i = 0; i < this.deck.cards.length; ++i){
+			this.deck.cards[i].style.overflowY = scroll ? "scroll" : "";
+		}
+	},
+
 	// Let's get this party started
 	init: function() {
 		var el = document.createElement('div').style, v = this.vendors, i, l;
@@ -108,6 +114,7 @@ var HOC = {
 
 		// Takes a DOM node and an object of its target state and a duration in msec
 		// Eg (document.body, { marginLeft: 100, marginTop: 100 }, 400)
+
 		tween: function(node,targetstate,duration,callback) {
 			var transition = {}, start = HOC.util.now(), that = HOC.ui;
 
@@ -172,11 +179,22 @@ var HOC = {
 		scrollhandler: function(event) {
 			var card, top;
 
+
 			// Give mini designs a bit of snappyness by attaching the card to the deck earlier
-			top = document.body.scrollTop - ( HOC.ui.height / (HOC.ui.mini() ? HOC.config.mobilesnap : HOC.config.normalsnap));
+			snapDistance = ( HOC.ui.height / (HOC.ui.mini() ? HOC.config.mobilesnap : HOC.config.normalsnap)); // actual snap distance in pixels
+			top = document.body.scrollTop - snapDistance;
 
 			// Convert current scrollposition to what would be the respective card
 			card = Math.floor(top / HOC.ui.height);
+
+
+			// If the card is locked in place, allow the card content to scroll
+			// Kind of janky -- it sets the content at EVERY scroll move
+			if ((card >= 0) && (document.body.scrollTop % HOC.ui.height < snapDistance)) {
+				HOC.toggleCardContentScroll(true);
+			} else {
+				HOC.toggleCardContentScroll(false);
+			}
 
 			// Abort if we're still on the same card
 			if (card == HOC.deck.currentcard) return;
