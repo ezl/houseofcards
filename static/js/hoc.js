@@ -334,6 +334,14 @@ var HOC = {
 
 					// Set height to screen
 					that.cards[i].style.height = (HOC.ui.height - offset) + 'px';
+
+					// Add padding to the bottom of the card to account for tagline
+					// height and allow the content to scroll past the tagline to expose
+					// itself for legibility
+					var tagline = that.cards[i].getElementsByClassName("tagline")[0];
+					if (tagline != undefined) {
+					that.cards[i].style.paddingBottom = tagline.scrollHeight;
+					}
 				}
 			});	
 		},		
@@ -366,7 +374,7 @@ var HOC = {
 					taglineOffset = 15; // This is #deck .card .tagline bottom from the css.
 										// Since the tagline is popping in and out of the DOM,
 										// the scroll looks jerky if we don't reset it. :/
-					tagline = card.getElementsByClassName("tagline")[0];
+					var tagline = card.getElementsByClassName("tagline")[0];
 					tagline.style.bottom = card.offsetHeight - card.scrollHeight + taglineOffset + 'px';
 				} else {
 					// Remove 
@@ -375,7 +383,7 @@ var HOC = {
 					card.style.top = (mini) ? '0' : '20px';									
 
 					// Set the tagline position
-					tagline = card.getElementsByClassName("tagline")[0];
+					var tagline = card.getElementsByClassName("tagline")[0];
 					tagline.style.bottom = '';
 				}
 
