@@ -359,12 +359,15 @@ var HOC = {
 					// Remove stacked CSS
 					card.className = card.className.replace(' stacked','');
 
-					// Set the tagline position
-					tagline = card.getElementsByClassName("tagline")[0];
-					tagline.style.bottom = card.offsetHeight - card.scrollHeight + 'px';
-
 					// Set proper top distance
 					card.style.top = HOC.ui.height * (this.currentcard + 1) + 'px';
+
+					// Set the tagline position
+					taglineOffset = 15; // This is #deck .card .tagline bottom from the css.
+										// Since the tagline is popping in and out of the DOM,
+										// the scroll looks jerky if we don't reset it. :/
+					tagline = card.getElementsByClassName("tagline")[0];
+					tagline.style.bottom = card.offsetHeight - card.scrollHeight + taglineOffset + 'px';
 				} else {
 					// Remove 
 					card.className += ' stacked';	
