@@ -53,6 +53,9 @@ h1 {
   line-height: 46px;  
 }
 
+.frosted {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 #deck .card.stacked .tagline {
   position: fixed;
   right: 20px; /* Set the 20px offsets since we're popping this out of the DOM */
